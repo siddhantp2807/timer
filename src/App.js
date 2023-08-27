@@ -1,24 +1,32 @@
-import logo from './logo.svg';
+import Timer from './Components/Timer';
 import './App.css';
+import SettingsState from './Context/SettingsState';
+import Settings from './Components/Settings';
+import { useState } from 'react';
+import SettingsButton from './Components/SettingsButton';
+import HomeButton from './Components/HomeButton';
+import Links from './Components/Links';
 
 function App() {
+
+  const [showTimer, setShowTimer] = useState(true);
+
+  const hideTimer = () => {
+    setShowTimer(false);
+  }
+
+  const unhideTimer = () => {
+    setShowTimer(true);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <Links/>
+      <SettingsState>
+        { showTimer ? <Timer/> : <Settings/> }
+        { showTimer ? <SettingsButton onClick={hideTimer}/> : <HomeButton onClick={unhideTimer} />}
+      </SettingsState>
+    </main>
   );
 }
 

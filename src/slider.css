@@ -1,0 +1,34 @@
+.slider {
+    height: 1.5px;
+    border: 1.5px solid var(--light-coral); /* COLORS */
+    border-radius: 20px;
+    background-color: var(--light-coral);
+}
+
+.thumb {
+    background-color: var(--light-coral); /* COLORS */
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    position: relative;
+    top: -9.5px;
+}
+
+.thumb::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--light-coral); /* COLORS */
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.2s ease;
+    opacity: 0.3;
+  }
+  
+.thumb:hover::before {
+    transform: scale(1.75);
+}
